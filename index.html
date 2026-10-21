@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Philip Szczechowicz — Georgetown undergraduate exploring finance, technology, and endurance sports. Selected experience and personal projects.">
+  <title>Philip Szczechowicz | Finance, technology & endurance</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="styles.css">
+  <script src="site.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <aside class="sidebar" aria-label="Profile and navigation">
+    <div class="profile">
+      <a class="name" href="#top" aria-label="Philip Szczechowicz, back to top">Philip<br>Szczechowicz</a>
+      <div class="small-rule" aria-hidden="true"></div>
+      <p class="education">Georgetown University<br>BSBA, expected May 2028</p>
+    </div>
+    <nav aria-label="Main navigation">
+      <a href="#about" aria-current="location">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="profile-links">
+      <a href="https://www.linkedin.com/in/philip-szcz"><img src="assets/linkedin.svg" alt="" width="20" height="20">LinkedIn</a>
+      <a href="https://github.com/Philip1575"><img src="assets/github.svg" alt="" width="20" height="20">GitHub</a>
+      <a href="resume.html"><img src="assets/file-earmark-text.svg" alt="" width="20" height="20">Résumé</a>
+    </div>
+  </aside>
+
+  <main id="main" tabindex="-1">
+    <header class="hero" id="top">
+      <p class="location">Washington, DC <span aria-hidden="true"></span></p>
+      <h1>Philip Szczechowicz</h1>
+      <p class="intro">Georgetown undergraduate interested in financial services and fintech.</p>
+    </header>
+
+    <section id="about" class="section about" aria-labelledby="about-title">
+      <h2 id="about-title">About</h2>
+      <p>I’m Philip Szczechowicz, a Georgetown University undergraduate majoring in Finance and Operations and Analytics, with a minor in Psychology. My interests span finance, technology, and endurance sports. I enjoy exploring how practical tools can make complex information more useful.</p>
+    </section>
+
+    <section id="experience" class="section experience" aria-labelledby="experience-title">
+      <h2 id="experience-title">Selected experience</h2>
+      <ol class="experience-list">
+        <li>
+          <div class="role"><h3>Bayberry Capital</h3><p>Analyst</p></div>
+          <p class="role-description">Supporting transaction diligence and researching valuation comparables.</p>
+        </li>
+        <li>
+          <div class="role"><h3>GUASFCU</h3><p>Finance Controller</p></div>
+          <p class="role-description">Financial operations, vendor payment processes, and training for the finance team.</p>
+        </li>
+        <li>
+          <div class="role"><h3>First Generation Investors</h3><p>Primary Tutor</p></div>
+          <p class="role-description">Teaching financial literacy and investment fundamentals to students at two DC schools.</p>
+        </li>
+        <li>
+          <div class="role"><h3>Georgetown University Libraries</h3><p>Student Assistant II</p></div>
+          <p class="role-description">Creating onboarding resources and coordinating book deliveries and interlibrary loans.</p>
+        </li>
+      </ol>
+    </section>
+
+    <section id="projects" class="section projects" aria-labelledby="projects-title">
+      <h2 id="projects-title">Featured project</h2>
+      <details class="project" id="garmin-project">
+        <summary>
+          <span class="project-overview">
+            <span class="project-title">Garmin training data workflow</span>
+            <span class="project-description">A local Python workflow built with AI assistance to collect and organize activity and recovery data.</span>
+            <span class="project-status">Personal project · Evolving</span>
+            <span class="project-action"><span class="when-closed">Read the project</span><span class="when-open">Close project details</span><img src="assets/arrow-right.svg" alt="" width="20" height="20"></span>
+          </span>
+          <span class="project-symbols" aria-hidden="true"><img class="document-icon" src="assets/file-earmark-text.svg" alt="" width="32" height="32"><img class="chevron" src="assets/chevron-down.svg" alt="" width="18" height="18"></span>
+        </summary>
+        <div class="project-details"><p><a href="https://github.com/Philip1575/Garmin-Data-exporter">View source and installation instructions on GitHub</a></p>
+          <div><h3>The problem</h3><p>I wanted a repeatable way to bring workout details and available recovery metrics into organized local files for personal training analysis.</p></div>
+          <div><h3>My role</h3><p>I used Python and Codex to build and refine the workflow, with AI assistance throughout development. I shaped the requirements and worked through how the data should be collected, organized, and used.</p></div>
+          <div><h3>The workflow</h3><ul><li>Import historical data for a selected date range.</li><li>Run scheduled daily updates, with missed-run catch-up when the computer is available.</li><li>Keep workout details, laps, and splits alongside available sleep, HRV, and other metrics.</li><li>Read organized local files with compatible AI tools, or upload selected files manually.</li></ul></div>
+          <div><h3>What I’m learning</h3><p>The project has made data availability, missing values, repeatable updates, and clear documentation central to how I think about a useful workflow.</p></div>
+          <div class="project-note"><h3>Current status</h3><p>This is an evolving personal project. A Windows starter package for friends has undergone local checks; testing on a fresh computer is still pending. The tool collects and organizes data. It does not independently prescribe training and is not endorsed by Garmin.</p><p>The scheduled task downloads data locally. Any use with an AI tool is a separate, intentional step.</p></div>
+        </div>
+      </details>
+    </section>
+
+    <section id="contact" class="section contact" aria-labelledby="contact-title">
+      <h2 id="contact-title">Contact</h2>
+      <p>I’m interested in connecting about finance opportunities, technology projects, and endurance sports.</p>
+      <a class="email" href="mailto:pjs284@georgetown.edu"><img src="assets/envelope.svg" alt="" width="22" height="22">pjs284@georgetown.edu</a>
+    </section>
+    <footer><span>Philip Szczechowicz</span><a href="#top">Back to top</a></footer>
+  </main>
+</body>
+</html>
