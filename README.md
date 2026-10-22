@@ -2,12 +2,12 @@
 
 Personal website and selected projects, with interests in financial services, fintech, technology, and endurance sports.
 
-**Visit the site:** https://philip1575.github.io/
+**[Open the live website](https://philip1575.github.io/Main-Website/)**
 
 ## What’s here
 
 - A responsive single-page introduction, experience overview, and contact section.
-- An expandable case study for the [Garmin Data Exporter](https://github.com/Philip1575/Garmin-Data-exporter).
+- An expandable case study for the [Garmin Data Exporter](https://github.com/Philip1575/Garmin-Mass-Exporter-and-Daily-Sync).
 - A print-friendly selected web résumé.
 
 Built with HTML, CSS, and a small JavaScript enhancement. No framework, external font requests, analytics, backend, or installation is required. Icons are from Bootstrap Icons; their license is included in `assets/`.
