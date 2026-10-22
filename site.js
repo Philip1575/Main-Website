@@ -8,6 +8,10 @@ function setCurrent(id) {
   }
 }
 function updateCurrent() {
+  if (window.scrollY <= 1) {
+    setCurrent(sections[0].id);
+    return;
+  }
   if (window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 2 && window.scrollY > 0) {
     setCurrent(sections.at(-1).id);
     return;
