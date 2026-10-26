@@ -1,31 +1,22 @@
 # Philip Szczechowicz
 
-Personal website and selected projects, with interests in financial services, fintech, technology, and endurance sports.
+**[Visit my website](https://philip1575.github.io/Main-Website/)**
 
-**[Open the live website](https://philip1575.github.io/Main-Website/)**
+Personal website with experience, projects, race results, and a training journal.
 
-## What’s here
-
-- A responsive single-page introduction, experience overview, and contact section.
-- An expandable case study for the [Garmin Data Exporter](https://github.com/Philip1575/Garmin-Mass-Exporter-and-Daily-Sync).
-- A print-friendly selected web résumé.
-
-Built with HTML, CSS, and a small JavaScript enhancement. No framework, external font requests, analytics, backend, or installation is required. Icons are from Bootstrap Icons; their license is included in `assets/`.
+- [Races and results](https://philip1575.github.io/Main-Website/races.html): DC District Challenge, BellRinger, and the Marine Corps Marathon, with interactive course maps, elevation profiles, photos, and official results where available.
+- [Training journal](https://philip1575.github.io/Main-Website/training.html): swimming, cycling, running, a daily activity calendar, and a sleep-score calendar.
+- [BellRinger thank-you](https://philip1575.github.io/Main-Website/donor-recap.html): the shared donor recap and weekend highlights.
+- A selected web résumé and [Garmin Data Exporter project](https://github.com/Philip1575/Garmin-Mass-Exporter-and-Daily-Sync).
 
 ## Preview locally
 
-Open `index.html` directly, or from this folder run:
+Run `python -m http.server 8000 --bind 127.0.0.1` in this folder and open http://127.0.0.1:8000/.
 
-```sh
-python -m http.server 8000 --bind 127.0.0.1
-```
+Built with HTML, CSS, and JavaScript. Bootstrap Icons attribution is included in `assets/`. Google supplies the optional map layer; the colored tracks are recorded event routes. Without a Maps key, local course diagrams remain available.
 
-Then open http://127.0.0.1:8000/ .
+## Publishing
 
-## Editing and publishing
+The Pages workflow deploys the public site from `main`. `GOOGLE_MAPS_API_KEY` is stored as a repository Actions secret and inserted into the deployment artifact. It is excluded from source control, but browser Maps keys are visible to site visitors. Configure website and API restrictions in Google Cloud. Demo keys have usage limits and are intended for prototyping; a standard key is recommended for production.
 
-Edit `index.html` for page copy, `styles.css` for layout, and `resume.html` for the web résumé. `site.js` adds current-section highlighting; navigation and project expansion work without it. Use relative file links for portability.
-
-GitHub Pages serves the root of `main`. Changes to that branch update the public website. Keep personal data, credentials, installed Garmin folders, and confidential transaction information out of this repository.
-
-Development planning notes are maintained separately from the public website.
+Activity and sleep snapshots are deliberately selected public exports. Credentials, raw Garmin archives, original GPX files, and local development notes are excluded. Training refreshes are prepared separately before publication; this repository does not authenticate to Garmin.
