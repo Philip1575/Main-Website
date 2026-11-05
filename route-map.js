@@ -4,6 +4,7 @@ const project=(lat,lon)=>[(lon+180)/360*256,(1-Math.log(Math.tan(Math.PI/4+lat*M
 const fmt=s=>{s=Math.round(s);return `${Math.floor(s/3600)}:${String(Math.floor(s%3600/60)).padStart(2,'0')}:${String(s%60).padStart(2,'0')}`};
 const pace=s=>{if(s==null)return 'Unavailable';s=Math.round(s);return `${Math.floor(s/60)}:${String(s%60).padStart(2,'0')} /mi`};
 document.querySelectorAll('[data-route]').forEach(host=>{
+ const compactCopy=host.closest('[data-compact-route-copy]')!==null;
  const r=routes.find(r=>r.id===host.dataset.route);if(!r)return;
  const cycling=r.sport==='ride',metric=cycling?'speed':'pace';
  const motion=s=>cycling?(s!=null&&s>0?`${(3600/s).toFixed(1)} mph`:'Unavailable'):pace(s);
@@ -15,7 +16,7 @@ document.querySelectorAll('[data-route]').forEach(host=>{
  host.innerHTML=`<div class="map-toolbar"><strong>${r.title}</strong><div><button type="button" data-zoom="out" aria-label="Zoom out ${r.title}">−</button><button type="button" data-zoom="in" aria-label="Zoom in ${r.title}">+</button><button type="button" data-zoom="reset">Fit route</button></div></div><svg class="course-map" viewBox="0 0 800 500" role="img" aria-label="Recorded ${r.title} route, north up. Use the position slider to explore pace."></svg><div class="pace-legend"><span>Faster</span><span class="gradient"></span><span>Slower</span></div><label class="route-slider">Follow the route<input type="range" min="0" max="${r.points.length-1}" value="0" step="1" aria-label="Position along ${r.title} course"></label><output class="route-readout" aria-live="polite"></output>`;
  host.querySelector('.course-map').setAttribute('aria-label',`Recorded ${r.title} route, north up. Use the position slider to explore ${metric} and elevation.`);
  const profile=document.createElement('div');profile.className='elevation-profile';
- profile.innerHTML=`<h4>Course elevation</h4><p class="profile-hint">Select the graph or map, or use the slider, to follow the same point on both.</p><svg class="elevation-chart" viewBox="0 0 800 260" role="img" aria-label="${r.title} elevation profile for the entire course, elevation in feet and distance in miles"></svg>`;
+ profile.innerHTML=`<h4>Course elevation</h4>${compactCopy?'':'<p class="profile-hint">Select the graph or map, or use the slider, to follow the same point on both.</p>'}<svg class="elevation-chart" viewBox="0 0 800 260" role="img" aria-label="${r.title} elevation profile for the entire course, elevation in feet and distance in miles"></svg>`;
  host.querySelector('.route-readout').after(profile);
  const svg=host.querySelector('.course-map'),chart=host.querySelector('.elevation-chart'),slider=host.querySelector('input'),readout=host.querySelector('output');
  const elevations=r.points.map(p=>p[5]).filter(v=>v!=null).map(v=>v/0.3048),maxDistance=r.points.at(-1)[2];
@@ -40,7 +41,7 @@ document.querySelectorAll('[data-route]').forEach(host=>{
  svg.innerHTML=`<rect width="800" height="500" fill="#edf0e9"/>${grid}<g>${lines}</g>${marker(0,'S')}${marker(coords.length-1,'F')}<circle cx="${p[0]}" cy="${p[1]}" r="8" fill="#a4ca88" stroke="#102019" stroke-width="3"/><path d="M760,60V25l-7,12m7,-12l7,12" stroke="#315f4e" fill="none" stroke-width="2"/><text x="760" y="80" text-anchor="middle" font-size="14" fill="#315f4e">N</text><path d="M25,460v8h100v-8" fill="none" stroke="#315f4e" stroke-width="2"/><text x="25" y="450" font-size="12" fill="#315f4e">${miles.toFixed(miles<1?2:1)} mi</text>`;
  }
  function update(){
-  const p=r.points[selected],elevation=p[5]==null?'Elevation unavailable':`${Math.round(p[5]/0.3048).toLocaleString()} ft elevation`,gain=p[6]==null?'Gain unavailable':`${Math.round(p[6]/0.3048).toLocaleString()} ft gain so far`;
+  const p=r.points[selected],elevation=p[5]==null?'Elevation unavailable':`${Math.round(p[5]/0.3048).toLocaleString()} ft elevation`,gain=p[6]==null?'Gain unavailable':`${Math.round(p[6]/0.3048).toLocaleString()} ft ${compactCopy?'GPX ascent so far':'gain so far'}`;
   readout.innerHTML=`<strong>${(p[2]/1609.344).toFixed(2)} mi along GPX track</strong><span>${motion(p[4])} estimated ${metric}</span><span>${fmt(p[3])} since first GPS point</span><span>${elevation}</span><span>${gain}</span>`;
   slider.setAttribute('aria-valuetext',`${(p[2]/1609.344).toFixed(2)} miles, estimated ${metric} ${motion(p[4])}, ${elevation}, ${gain}`);draw();drawProfile()
  }
