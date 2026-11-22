@@ -1,0 +1,42 @@
+/* Shared look for the subpages, loaded after each page's own styles.
+   Matches the homepage: Archivo, condensed headings, sentence-case labels. */
+:root{--font:"Archivo",Arial,Helvetica,sans-serif;--muted:#535a56;--line:#dcdfd8;--rest:#e3e6df}
+body{font-family:var(--font);font-size:17px;line-height:1.6}
+button,select,input{font-family:inherit}
+
+/* Sidebar */
+aside .signature{font-size:clamp(24px,2.8vw,34px);font-weight:700;font-variation-settings:"wdth" 75;line-height:1.1;letter-spacing:-.01em;color:#f5f6f3}
+aside .edition{font-size:14px;letter-spacing:0;color:var(--accent);margin:22px 0 26px;padding-top:22px;border-top:2px solid var(--accent);width:40px;white-space:nowrap}
+aside nav{gap:4px}
+aside nav a{color:#cbd2cd;font-size:15px;padding:7px 0;line-height:1.4}
+aside nav a:hover{color:#fff}
+aside .back{color:#cbd2cd;font-size:14px;text-decoration:none;border-top:1px solid #3b4940;padding-top:18px}
+aside .back:hover{color:#fff}
+
+/* Headings and labels */
+.eyebrow{font-size:15px;letter-spacing:0;text-transform:none;font-weight:600;color:var(--green);margin-bottom:12px}
+h1{font-weight:800;font-variation-settings:"wdth" 62;font-size:clamp(46px,6.6vw,100px);line-height:.95;letter-spacing:-.01em;text-wrap:balance}
+h2{font-weight:750;font-variation-settings:"wdth" 70;font-size:clamp(32px,3.6vw,46px);line-height:1.05;letter-spacing:-.005em}
+h3{font-weight:650}
+.lead{font-size:clamp(18px,1.7vw,22px);line-height:1.55}
+.tag,.event .tag,.challenge-heading .tag{font-size:14px;letter-spacing:0;text-transform:none;font-weight:600}
+main a{color:var(--green);text-underline-offset:4px;text-decoration-thickness:1px}
+
+/* Big numbers use the condensed display cut */
+.gift strong,.sport-card strong,.challenge-stats strong,.sleep-summary strong,.stat strong,.event .distance,.sleep-readout strong{
+  font-weight:800;font-variation-settings:"wdth" 62;letter-spacing:0;font-variant-numeric:tabular-nums;line-height:1.05}
+.sport-card strong,.challenge-stats strong,.sleep-summary strong{font-size:40px}
+.gift strong{font-size:72px}
+.stat strong{font-size:40px;color:var(--ink)}
+.stat span{font-size:14px}
+
+/* Quieter panels: hairline tops instead of tinted boxes */
+.stat{background:transparent;border-top:2px solid var(--ink);padding:16px 0 0}
+.sport-card{background:transparent;border-top-width:4px;padding:16px 0 0}
+.challenge-result{background:transparent;border:0;border-top:2px solid var(--ink);padding:22px 0 0}
+.event{background:transparent;border-top:2px solid var(--ink);padding:18px 0 0}
+
+select{border-radius:3px}
+section{border-bottom-color:var(--line)}
+
+@media(max-width:760px){aside nav{gap:2px 20px}aside .signature br{display:none}}

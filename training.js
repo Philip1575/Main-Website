@@ -1,6 +1,6 @@
 (()=>{
 const D=window.TRAINING_DATA,$=s=>document.querySelector(s),months=['January','February','March','April','May','June','July','August','September','October','November','December'];
-const labels={running:'Running',cycling:'Cycling',swimming:'Swimming',other:'Other sports'},colors={running:'#315f4e',cycling:'#687938',swimming:'#376b86',other:'#81765d'};
+const labels={running:'Running',cycling:'Cycling',swimming:'Swimming',other:'Other sports'},colors={running:'#315f4e',cycling:'#c08a2e',swimming:'#3a7ca5',other:'#aab1aa'};
 const sportName=s=>({road_biking:'Road cycling',virtual_ride:'Virtual ride',lap_swimming:'Pool swimming',treadmill_running:'Treadmill running',stand_up_paddleboarding_v2:'Stand-up paddleboarding',resort_snowboarding:'Resort snowboarding',kayaking_v2:'Kayaking'}[s]||s.replaceAll('_',' ').replace(/^./,c=>c.toUpperCase()));
 const sum=(rows,k)=>{const vals=rows.map(a=>a[k]).filter(v=>v!=null);return vals.length?vals.reduce((a,b)=>a+b,0):null};
 const hours=s=>{if(s==null)return 'Unavailable';const m=Math.round(s/60);return `${Math.floor(m/60)}h ${m%60}m`};
