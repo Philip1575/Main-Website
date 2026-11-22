@@ -105,10 +105,13 @@ h3{font-size:18px;font-weight:650;line-height:1.35}
 .work-list p:not(.role){color:var(--muted);font-size:16px}
 
 /* Built */
-.build{max-width:44em;display:grid;gap:14px}
-.build h3{font-size:24px;font-weight:700;font-variation-settings:"wdth" 80}
-.build p{color:var(--muted)}
-.build .build-note{font-size:14px}
+.builds{display:grid;gap:0;max-width:52em}
+.build{display:grid;gap:10px;padding:26px 0;border-top:1px solid var(--line)}
+.build:first-child{border-top:2px solid var(--ink)}
+.build-meta{font-size:14px;font-weight:600;color:var(--green)}
+.build h3{font-size:26px;font-weight:750;font-variation-settings:"wdth" 75;line-height:1.15}
+.build p:not(.build-meta){color:var(--muted)}
+.build .build-note{font-size:15px}
 
 /* Contact */
 .contact h2{margin-bottom:14px}

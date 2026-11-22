@@ -19,11 +19,11 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..800&display=swap">
-  <link rel="stylesheet" href="styles.css?v=home-8">
+  <link rel="stylesheet" href="styles.css?v=home-9">
   <link rel="stylesheet" href="sidebar.css?v=static-2">
   <script src="training-data.js?v=20261122" defer></script>
-  <script src="home.js?v=home-8" defer></script>
-  <script src="site.js?v=home-8" defer></script>
+  <script src="home.js?v=home-9" defer></script>
+  <script src="site.js?v=home-9" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -38,7 +38,7 @@
       <a href="#races">Races</a>
       <a href="#next">Next: IRONMAN</a>
       <a href="#work">Work</a>
-      <a href="#built">Something I built</a>
+      <a href="#built">Things I built</a>
       <a href="#contact">Contact</a>
       <a class="nav-page" href="training.html">Training journal</a>
     </nav>
@@ -148,14 +148,28 @@
 
     <section id="built" class="section" aria-labelledby="built-title">
       <div class="section-head">
-        <h2 id="built-title">Something I built</h2>
-        <p>The tool behind the training data on this page.</p>
+        <h2 id="built-title">Things I built</h2>
+        <p>I design, test, and maintain these myself. Most of the code was written with AI assistance.</p>
       </div>
-      <div class="build">
-        <h3>Garmin training data workflow</h3>
-        <p>A local Python workflow, built with AI assistance in Codex, that pulls my workouts, laps, sleep, and HRV into organized files. It backfills any date range and runs a scheduled daily sync that catches up on missed days. I wrote the requirements and decided how the data should be collected and organized. The project taught me to plan for missing values and to keep the documentation clear.</p>
-        <p class="build-note">Personal project, still evolving. Not affiliated with Garmin.</p>
-        <p><a href="https://github.com/Philip1575/Garmin-Mass-Exporter-and-Daily-Sync">View the source on GitHub</a></p>
+      <div class="builds">
+        <article class="build">
+          <p class="build-meta">GUASFCU finance team, live since November 2026</p>
+          <h3>Reconciliation website</h3>
+          <p>A password-protected internal site that automates seven of the credit union’s daily and monthly reconciliations, including the Federal Reserve account. Each one takes the month’s exports and last month’s workbook and produces the finished workbook plus the entries to post. Files are processed only in the browser. Every rec runs a check that ties the output back to source balances before anything is downloaded, and saved test runs catch accidental changes. I designed it and handled the improvements and testing, with a colleague as co-builder and tester. It saves the team an estimated 25 hours a month.</p>
+          <p class="build-note">Internal tool, so there’s no public link.</p>
+        </article>
+        <article class="build">
+          <p class="build-meta">Personal project, still evolving</p>
+          <h3>Garmin training data workflow</h3>
+          <p>A local Python tool that pulls my workouts, laps, sleep, and HRV into organized files. It backfills any date range and runs a scheduled daily sync that catches up on missed days. I wrote the requirements and decided how the data should be collected and organized. It taught me to plan for missing values and keep the documentation clear.</p>
+          <p class="build-note">Not affiliated with Garmin. <a href="https://github.com/Philip1575/Garmin-Mass-Exporter-and-Daily-Sync">View the source on GitHub</a></p>
+        </article>
+        <article class="build">
+          <p class="build-meta">Runs every day at noon</p>
+          <h3>Self-updating training page</h3>
+          <p>The season strip, totals, and IRONMAN distances on this site update themselves. A scheduled script reads the Garmin tool’s local data, keeps only dates, sports, distances, times, and sleep scores, and publishes to GitHub when something changed. It refuses any update that looks like lost data or includes a field outside that list, and leaves the site unchanged.</p>
+          <p class="build-note"><a href="https://github.com/Philip1575/Main-Website/blob/main/tools/refresh_site_data.py">Read the script</a> or <a href="training.html">open the training journal</a></p>
+        </article>
       </div>
     </section>
 
