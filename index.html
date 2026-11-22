@@ -3,12 +3,28 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Philip Szczechowicz — Georgetown undergraduate exploring finance, technology, and endurance sports. Selected experience and personal projects.">
-  <title>Philip Szczechowicz | Finance, technology & endurance</title>
-  <link rel="icon" href="data:,">
-  <link rel="stylesheet" href="styles.css?v=bed0236">
-  <script src="site.js?v=a6c16fa" defer></script>
-<link rel="stylesheet" href="sidebar.css?v=static-2"></head>
+  <meta name="description" content="Philip Szczechowicz: Georgetown finance student and endurance athlete. A season of training, race results, and selected experience.">
+  <title>Philip Szczechowicz | Finance student and endurance athlete</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="canonical" href="https://philip1575.github.io/Main-Website/">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://philip1575.github.io/Main-Website/">
+  <meta property="og:title" content="Philip Szczechowicz">
+  <meta property="og:description" content="Georgetown finance student and endurance athlete. 100 miles on Saturday, a marathon on Sunday, and IRONMAN Maryland next.">
+  <meta property="og:image" content="https://philip1575.github.io/Main-Website/assets/home/og-card.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#102019">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..800&display=swap">
+  <link rel="stylesheet" href="styles.css?v=home-8">
+  <link rel="stylesheet" href="sidebar.css?v=static-2">
+  <script src="training-data.js?v=20261102" defer></script>
+  <script src="home.js?v=home-8" defer></script>
+  <script src="site.js?v=home-8" defer></script>
+</head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
   <aside class="sidebar" aria-label="Profile and navigation">
@@ -18,11 +34,13 @@
       <p class="education">Georgetown University<br>BSBA, expected May 2028</p>
     </div>
     <nav aria-label="Main navigation">
-      <a href="#about" aria-current="location">About</a>
-      <a href="#experience">Experience</a>
-      <a href="#projects">Projects</a><a href="#races">Races</a>
-      <a href="training.html">Training</a>
+      <a href="#season" aria-current="location">The season</a>
+      <a href="#races">Races</a>
+      <a href="#next">Next: IRONMAN</a>
+      <a href="#work">Work</a>
+      <a href="#built">Something I built</a>
       <a href="#contact">Contact</a>
+      <a class="nav-page" href="training.html">Training journal</a>
     </nav>
     <div class="profile-links">
       <a href="https://www.linkedin.com/in/philip-szcz"><img src="assets/linkedin.svg" alt="" width="20" height="20">LinkedIn</a>
@@ -33,65 +51,120 @@
   </aside>
 
   <main id="main" tabindex="-1">
-    <section id="about" class="section about" aria-labelledby="about-title">
-      <h1 id="about-title">About</h1>
-      <p>I’m a Georgetown University undergraduate majoring in Finance and Operations and Analytics, with a minor in Psychology. My interests span financial services, fintech, technology, and endurance sports. I enjoy exploring how practical tools can make complex information more useful.</p>
-    </section>
+    <section id="season" class="hero" aria-labelledby="hero-title">
+      <h1 id="hero-title"><span>100 miles on Saturday.</span> <span>A marathon on Sunday.</span></h1>
+      <p class="intro">I’m Philip, a Georgetown junior studying finance and operations &amp; analytics. Most days start with a run, a ride, or a swim. In October that added up to a 100-mile charity ride and the Marine Corps Marathon on back-to-back days.</p>
 
-    <section id="experience" class="section experience" aria-labelledby="experience-title">
-      <h2 id="experience-title">Selected experience</h2>
-      <ol class="experience-list">
-        <li>
-          <div class="role"><h3>Bayberry Capital</h3><p>Analyst</p></div>
-          <p class="role-description">Supporting buy-side and sell-side diligence, including valuation of private and public companies for potential acquisitions.</p>
-        </li>
-        <li>
-          <div class="role"><h3>GUASFCU</h3><p>Finance Controller</p><p>Interim Chief Financial Officer · Summer 2026</p></div>
-          <p class="role-description">Overseeing financial operations for over $12.5 million in deposits, preparing Call Reports in accordance with NCUA requirements, managing vendor payments, and training the finance team.</p>
-        </li>
-        <li>
-          <div class="role"><h3>First Generation Investors</h3><p>Primary Tutor</p></div>
-          <p class="role-description">Teaching financial literacy and investment fundamentals to students at two DC schools.</p>
-        </li>
-        <li>
-          <div class="role"><h3>Georgetown University Libraries</h3><p>Student Assistant II</p></div>
-          <p class="role-description">Creating onboarding resources and coordinating book deliveries and interlibrary loans.</p>
-        </li>
-      </ol>
-    </section>
-
-    <section id="projects" class="section projects" aria-labelledby="projects-title">
-      <h2 id="projects-title">Featured project</h2>
-      <details class="project" id="garmin-project">
-        <summary>
-          <span class="project-overview">
-            <span class="project-title">Garmin training data workflow</span>
-            <span class="project-description">A local Python workflow built with AI assistance to collect and organize activity and recovery data.</span>
-            <span class="project-status">Personal project · Evolving</span>
-            <span class="project-action"><span class="when-closed">Read the project</span><span class="when-open">Close project details</span><img src="assets/arrow-right.svg" alt="" width="20" height="20"></span>
-          </span>
-          <span class="project-symbols" aria-hidden="true"><img class="document-icon" src="assets/file-earmark-text.svg" alt="" width="32" height="32"><img class="chevron" src="assets/chevron-down.svg" alt="" width="18" height="18"></span>
-        </summary>
-        <div class="project-details"><p><a href="https://github.com/Philip1575/Garmin-Mass-Exporter-and-Daily-Sync">View source and installation instructions on GitHub</a></p>
-          <div><h3>The problem</h3><p>I wanted a repeatable way to bring workout details and available recovery metrics into organized local files for personal training analysis.</p></div>
-          <div><h3>My role</h3><p>I used Python and Codex to build and refine the workflow, with AI assistance throughout development. I shaped the requirements and worked through how the data should be collected, organized, and used.</p></div>
-          <div><h3>The workflow</h3><ul><li>Import historical data for a selected date range.</li><li>Run scheduled daily updates, with missed-run catch-up when the computer is available.</li><li>Keep workout details, laps, and splits alongside available sleep, HRV, and other metrics.</li><li>Read organized local files with compatible AI tools, or upload selected files manually.</li></ul></div>
-          <div><h3>What I’m learning</h3><p>The project has made data availability, missing values, repeatable updates, and clear documentation central to how I think about a useful workflow.</p></div>
-          <div class="project-note"><h3>Current status</h3><p>This is an evolving personal project. A Windows starter package for friends has undergone local checks. The tool collects and organizes data. It does not independently prescribe training and is not endorsed by Garmin.</p><p>The scheduled task downloads data locally. Any use with an AI tool is a separate, intentional step.</p></div>
+      <figure class="season" aria-labelledby="season-caption">
+        <div class="season-head">
+          <p id="season-readout" class="season-readout" aria-live="polite">Every day of training since March 2.</p>
+          <ul class="legend" aria-label="Colors by sport">
+            <li><span class="swatch run"></span>Run</li>
+            <li><span class="swatch ride"></span>Ride</li>
+            <li><span class="swatch swim"></span>Swim</li>
+            <li><span class="swatch other"></span>Other</li>
+            <li><span class="swatch race"></span>Race day</li>
+          </ul>
         </div>
-      </details>
+        <div id="season-strip" class="season-strip"></div>
+        <figcaption id="season-caption">
+          <span id="season-totals">240 hours of training on 169 days between March 2 and November 2: 680 miles running, 1,365 miles riding, and 16 miles swimming.</span>
+          <span class="season-hint">Each bar is one day, and its height is time spent training. Hover or use the arrow keys to read a day.</span>
+        </figcaption>
+      </figure>
     </section>
 
-    <section id="training" class="section"><h2>Training</h2><p>A year of swimming, cycling, running, and the sessions in between.</p><p><a href="training.html">Explore my training journal →</a></p></section><section id="races" class="section"><h2>Races</h2><p>A look at the routes and results from the DC District Challenge (5K + half marathon), BellRinger, and Marine Corps Marathon.</p><p><a href="races.html">Explore races and recorded courses →</a></p></section><section id="contact" class="section contact" aria-labelledby="contact-title">
-      <h2 id="contact-title">Contact</h2>
-      <p>I’m interested in connecting about finance opportunities, technology projects, and endurance sports.</p>
+    <section id="races" class="section" aria-labelledby="races-title">
+      <div class="section-head">
+        <h2 id="races-title">Race results</h2>
+        <p>Official results, except BellRinger, which is timed from my Garmin recording.</p>
+      </div>
+      <div class="races-layout">
+        <ol class="timeline">
+          <li>
+            <time datetime="2026-09-19">Sep 19</time>
+            <div><h3>DC District Challenge 5K</h3><p class="result">19:52</p><p>6:25 per mile, 28th overall.</p></div>
+          </li>
+          <li>
+            <time datetime="2026-09-20">Sep 20</time>
+            <div><h3>DC District Challenge half marathon</h3><p class="result">1:38:21</p><p>Run the morning after the 5K. 14th overall in the two-race challenge.</p></div>
+          </li>
+          <li class="key">
+            <time datetime="2026-10-24">Oct 24</time>
+            <div><h3>BellRinger</h3><p class="result">100 miles</p><p>About seven hours of riding, and $840 raised from friends and family. <a href="donor-recap.html">Read the thank-you recap</a></p></div>
+          </li>
+          <li class="key">
+            <time datetime="2026-10-25">Oct 25</time>
+            <div><h3>Marine Corps Marathon</h3><p class="result">3:53:14</p><p>The next morning. 5,340th of 24,973 finishers, in the top 22%.</p></div>
+          </li>
+        </ol>
+        <div class="photos">
+          <figure><img src="assets/home/bellringer-finish.jpg" alt="Philip standing with his road bike at the BellRinger finish line" width="900" height="1084" loading="lazy"><figcaption>BellRinger finish, Saturday</figcaption></figure>
+          <figure><img src="assets/home/marathon-finish.jpg" alt="Philip sitting on the pavement with his Marine Corps Marathon medal" width="900" height="1200" loading="lazy"><figcaption>Marathon finish, Sunday</figcaption></figure>
+        </div>
+      </div>
+      <p class="more"><a href="races.html">See the courses, splits, and elevation for each race</a></p>
+    </section>
+
+    <section id="next" class="section next" aria-labelledby="next-title">
+      <div class="section-head">
+        <h2 id="next-title">Next: IRONMAN Maryland, 2027</h2>
+        <p>A 2.4-mile swim, a 112-mile ride, and a marathon, back to back in one day.</p>
+      </div>
+      <p class="next-lede">This year I covered each distance on its own. Next year the job is to put all three together.</p>
+      <div class="distance-rows" id="distance-rows">
+        <div class="distance-row distance-key" aria-hidden="true"><span></span><span>Longest single session this year, against race distance</span><span></span></div>
+        <div class="distance-row" data-group="swimming" data-race="2.4">
+          <h3>Swim</h3>
+          <div class="track" aria-hidden="true"><span class="fill swim"></span></div>
+          <p><strong class="best">2.4 mi</strong> of 2.4 mi</p>
+        </div>
+        <div class="distance-row" data-group="cycling" data-race="112">
+          <h3>Ride</h3>
+          <div class="track" aria-hidden="true"><span class="fill ride"></span></div>
+          <p><strong class="best">100 mi</strong> of 112 mi</p>
+        </div>
+        <div class="distance-row" data-group="running" data-race="26.2">
+          <h3>Run</h3>
+          <div class="track" aria-hidden="true"><span class="fill run"></span></div>
+          <p><strong class="best">26.5 mi</strong> of 26.2 mi</p>
+        </div>
+      </div>
+      <p class="next-close">Race day adds up to 140.6 miles. My biggest day so far is <span id="biggest-day">100 miles</span>.</p>
+    </section>
+
+    <section id="work" class="section" aria-labelledby="work-title">
+      <div class="section-head">
+        <h2 id="work-title">Work</h2>
+        <p>The short version. My <a href="resume.html">full résumé</a> has the details.</p>
+      </div>
+      <ul class="work-list">
+        <li><h3>Bayberry Capital</h3><p class="role">Analyst</p><p>Buy-side and sell-side diligence, including valuing private and public companies for potential acquisitions.</p></li>
+        <li><h3>GUASFCU</h3><p class="role">Finance Controller, Interim CFO in summer 2026</p><p>Financial operations for over $12.5 million in deposits, NCUA Call Reports, vendor payments, and training a 26-person finance team.</p></li>
+        <li><h3>First Generation Investors</h3><p class="role">Primary Tutor</p><p>Teaching financial literacy and investing to students at two DC schools.</p></li>
+        <li><h3>Georgetown University Libraries</h3><p class="role">Student Assistant II</p><p>Onboarding resources for new hires, plus deliveries and interlibrary loans across 13 libraries.</p></li>
+      </ul>
+    </section>
+
+    <section id="built" class="section" aria-labelledby="built-title">
+      <div class="section-head">
+        <h2 id="built-title">Something I built</h2>
+        <p>The tool behind the training data on this page.</p>
+      </div>
+      <div class="build">
+        <h3>Garmin training data workflow</h3>
+        <p>A local Python workflow, built with AI assistance in Codex, that pulls my workouts, laps, sleep, and HRV into organized files. It backfills any date range and runs a scheduled daily sync that catches up on missed days. I wrote the requirements and decided how the data should be collected and organized. The project taught me to plan for missing values and to keep the documentation clear.</p>
+        <p class="build-note">Personal project, still evolving. Not affiliated with Garmin.</p>
+        <p><a href="https://github.com/Philip1575/Garmin-Mass-Exporter-and-Daily-Sync">View the source on GitHub</a></p>
+      </div>
+    </section>
+
+    <section id="contact" class="section contact" aria-labelledby="contact-title">
+      <h2 id="contact-title">Say hello</h2>
+      <p>I’m glad to talk about finance, about something you’re building, or about a race you’re training for.</p>
       <a class="email" href="mailto:pjs284@georgetown.edu"><img src="assets/envelope.svg" alt="" width="22" height="22">pjs284@georgetown.edu</a>
     </section>
     <footer><span>Philip Szczechowicz</span><a href="#main">Back to top</a></footer>
   </main>
 </body>
 </html>
-
-
-
-
