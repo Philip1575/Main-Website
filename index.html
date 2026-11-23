@@ -21,8 +21,8 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..800&display=swap">
   <link rel="stylesheet" href="styles.css?v=home-9">
   <link rel="stylesheet" href="sidebar.css?v=static-2">
-  <script src="training-data.js?v=20261122" defer></script>
-  <script src="home.js?v=home-9" defer></script>
+  <script src="training-data.js?v=20261122-strava" defer></script>
+  <script src="home.js?v=home-10" defer></script>
   <script src="site.js?v=home-9" defer></script>
 </head>
 <body>
@@ -57,7 +57,7 @@
 
       <figure class="season" aria-labelledby="season-caption">
         <div class="season-head">
-          <p id="season-readout" class="season-readout" aria-live="polite">Every day of training since March 2.</p>
+          <p id="season-readout" class="season-readout" aria-live="polite">Every day of training since January 1.</p>
           <ul class="legend" aria-label="Colors by sport">
             <li><span class="swatch run"></span>Run</li>
             <li><span class="swatch ride"></span>Ride</li>
@@ -68,7 +68,7 @@
         </div>
         <div id="season-strip" class="season-strip"></div>
         <figcaption id="season-caption">
-          <span id="season-totals">258 hours of training on 178 days between March 2 and November 15: 689 miles running, 1,428 miles riding, and 16 miles swimming.</span>
+          <span id="season-totals">298 hours of training on 242 days between January 1 and November 22: 893 miles running, 1,539 miles riding, and 16 miles swimming.</span>
           <span class="season-hint">Each bar is one day, and its height is time spent training. Hover or use the arrow keys to read a day.</span>
         </figcaption>
       </figure>
@@ -173,7 +173,7 @@
         <article class="build">
           <p class="build-meta">Runs every day at noon</p>
           <h3>Self-updating training page</h3>
-          <p>The season strip, totals, and IRONMAN distances on this site update themselves. A scheduled script reads the Garmin tool’s local data, keeps only dates, sports, distances, times, and sleep scores, and publishes to GitHub when something changed. It refuses any update that looks like lost data or includes a field outside that list, and leaves the site unchanged.</p>
+          <p>The season strip, totals, and IRONMAN distances on this site update themselves. A scheduled script reads the Garmin tool’s local data (January and February come from a one-time Strava export), keeps only dates, sports, distances, times, and sleep scores, and publishes to GitHub when something changed. It refuses any update that looks like lost data or includes a field outside that list, and leaves the site unchanged.</p>
           <p class="build-note"><a href="https://github.com/Philip1575/Main-Website/blob/main/tools/refresh_site_data.py">Read the script</a> or <a href="training.html">open the training journal</a></p>
         </article>
       </div>

@@ -12,7 +12,7 @@
   const groupOf = g => ({ running: 'run', cycling: 'ride', swimming: 'swim' })[g] || 'other';
   const sportNames = {
     running: 'Run', treadmill_running: 'Treadmill run', trail_running: 'Trail run',
-    road_biking: 'Ride', virtual_ride: 'Indoor ride', lap_swimming: 'Pool swim',
+    road_biking: 'Ride', cycling: 'Ride', virtual_ride: 'Indoor ride', lap_swimming: 'Pool swim',
     open_water_swimming: 'Open-water swim', strength_training: 'Strength', walking: 'Walk',
     hiking: 'Hike', stand_up_paddleboarding_v2: 'Paddleboard', kayaking_v2: 'Kayak',
     resort_snowboarding: 'Snowboard', other: 'Other'

@@ -8,6 +8,11 @@ Privacy whitelist (unchanged from the original weekly refresh):
   sleep:    local date, sleep score, Garmin's quality category
 Nothing else (routes, heart rate, HRV, weight, start times, account data) is exported.
 
+January-February 2026 predate the Garmin history. They come from a fixed, one-time Strava
+supplement (tools/strava-2026-jan-feb.json, built by tools/import_strava_export.py) with the
+same whitelist. Supplement rows dated on or after the first Garmin date are dropped, so a day
+is never counted from both sources.
+
 Usage:
   python tools/refresh_site_data.py            refresh, verify, commit and push if changed
   python tools/refresh_site_data.py --no-push  refresh and verify only (local files change)
@@ -25,6 +30,7 @@ from zoneinfo import ZoneInfo
 SITE = pathlib.Path(__file__).resolve().parents[1]
 SOURCE = pathlib.Path(os.environ.get('GARMINSYNC_DIR', pathlib.Path.home() / 'GarminSync'))
 LOG_DIR = SITE / 'tools' / 'logs'
+SUPPLEMENT = SITE / 'tools' / 'strava-2026-jan-feb.json'
 ET = ZoneInfo('America/New_York')
 MAX_SYNC_AGE = datetime.timedelta(hours=36)
 
@@ -107,9 +113,30 @@ def build_training(synced, local_date):
     if not rows:
         raise Skip('no activity records found')
     rows.sort(key=lambda r: (r['date'], r['key']))
+    garmin_start = rows[0]['date']
+    early = [r for r in read_supplement() if r['date'] < garmin_start]
+    if seen & {r['key'] for r in early}:
+        raise Skip('Strava supplement repeats a Garmin activity id')
+    rows = early + rows
     return {'as_of': cutoff, 'synced_on': synced.astimezone(ET).date().isoformat(),
-            'coverage_start': rows[0]['date'], 'activities': rows,
+            'coverage_start': rows[0]['date'], 'garmin_start': garmin_start, 'activities': rows,
             'excluded_sports': ['breathwork'], 'excluded_parent_count': parents}
+
+
+def read_supplement():
+    """Fixed Strava rows for the weeks before the Garmin history begins."""
+    if not SUPPLEMENT.exists():
+        raise Skip(f'missing {SUPPLEMENT.name}')
+    rows, keys = read_json(SUPPLEMENT)['activities'], set()
+    for r in rows:
+        if r['key'] in keys or not r['key'].startswith('strava-'):
+            raise Skip(f"bad or duplicate supplement id {r['key']}")
+        keys.add(r['key'])
+        for field in TIMING_FIELDS:
+            value = r.get(field)
+            if value is not None and (not isinstance(value, (int, float)) or not math.isfinite(value) or value < 0):
+                raise Skip(f"invalid {field} on supplement activity {r['key']}")
+    return sorted(rows, key=lambda r: (r['date'], r['key']))
 
 
 def build_sleep(local_date):
