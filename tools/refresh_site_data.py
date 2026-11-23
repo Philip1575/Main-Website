@@ -204,6 +204,29 @@ def bump_cache_versions(version):
             path.write_bytes(new.encode('utf-8'))
 
 
+def update_static_text(training):
+    """Keep the homepage's no-JavaScript text (also read by link previews and search) in step
+    with the data. Uses the same rules as home.js: included sessions of at least one minute."""
+    acts = [a for a in training['activities']
+            if a['included'] and (a['timer_duration_s'] or 0) >= 60
+            and training['coverage_start'] <= a['date'] <= training['as_of']]
+    hours = int(sum(a['timer_duration_s'] or 0 for a in acts) / 3600 + 0.5)
+    days = len({a['date'] for a in acts})
+    miles = {g: int(sum(a['distance_m'] or 0 for a in acts if a['group'] == g) / 1609.344 + 0.5)
+             for g in ('running', 'cycling', 'swimming')}
+    nice = lambda d: datetime.date.fromisoformat(d).strftime('%B ') + str(int(d[8:]))
+    totals = (f"{hours:,} hours of training on {days} days between {nice(training['coverage_start'])} and "
+              f"{nice(training['as_of'])}: {miles['running']:,} miles running, {miles['cycling']:,} miles riding, "
+              f"and {miles['swimming']:,} miles swimming.")
+    updated = f"Updated every day from my Garmin. Data through {nice(training['as_of'])}."
+    path = SITE / 'index.html'
+    text = path.read_bytes().decode('utf-8')
+    new = re.sub(r'(<span id="season-totals">)[^<]*(</span>)', lambda m: m.group(1) + totals + m.group(2), text)
+    new = re.sub(r'(<span id="season-updated" class="season-updated">)[^<]*(</span>)', lambda m: m.group(1) + updated + m.group(2), new)
+    if new != text:
+        path.write_bytes(new.encode('utf-8'))
+
+
 def git(*args, check=True):
     result = subprocess.run(['git', *args], cwd=SITE, capture_output=True, text=True,
                             creationflags=getattr(subprocess, 'CREATE_NO_WINDOW', 0))
@@ -240,6 +263,7 @@ def main():
             log(f"no change (training through {training['as_of']}, sleep through {sleep['as_of']})")
             return 0
         bump_cache_versions(training['as_of'].replace('-', ''))
+        update_static_text(training)
         summary = (f"training through {training['as_of']} ({sum(a['included'] for a in training['activities'])} sessions), "
                    f"sleep through {sleep['as_of']}")
         if not push:

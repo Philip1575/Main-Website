@@ -27,7 +27,7 @@ jobs:
         run: |
           mkdir _site
           cp -R assets _site/
-          cp *.html *.css *.js .nojekyll _site/
+          cp *.html *.css *.js *.xml *.txt .nojekyll _site/
           python - <<'PY'
           import json, os
           from pathlib import Path

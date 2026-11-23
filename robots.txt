@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://philip1575.github.io/Main-Website/sitemap.xml

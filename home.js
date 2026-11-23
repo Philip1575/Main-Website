@@ -45,6 +45,9 @@
     totalsEl.textContent = `${fmt.format(totals.secs / 3600)} hours of training on ${activeDays} days between ${nice(data.coverage_start)} and ${nice(data.as_of)}: ${fmt.format(totals.run)} miles running, ${fmt.format(totals.ride)} miles riding, and ${fmt.format(totals.swim)} miles swimming.`;
   }
 
+  const updatedEl = document.getElementById('season-updated');
+  if (updatedEl) updatedEl.textContent = `Updated every day from my Garmin. Data through ${nice(data.as_of)}.`;
+
   // Draw
   const STEP = 5, BAR = 3.6, H = 230, TOP = 14;
   const maxSecs = Math.max(...days.map(d => groups.reduce((s, g) => s + d.secs[g], 0)), 3600);
