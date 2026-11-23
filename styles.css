@@ -68,6 +68,10 @@ h1 span+span{color:var(--green)}
 .season-strip svg:focus-visible{outline:3px solid var(--green);outline-offset:6px}
 .season-strip .run{fill:var(--run)}.season-strip .ride{fill:var(--ride)}.season-strip .swim{fill:var(--swim)}.season-strip .other{fill:var(--other)}
 .season-strip .rest{fill:var(--rest)}
+.season-strip .injury{fill:#f3e3dd}
+.swatch.injury{background:#f3e3dd;border:1px solid #d9b9ad}
+.injury-labels{position:absolute;inset:0 0 auto 0;pointer-events:none}
+.injury-labels span{position:absolute;top:2px;padding-left:4px;font-size:12px;font-weight:600;color:#8a4b3c;white-space:nowrap}
 .season-strip .cursor{fill:var(--ink);opacity:.07}
 .season-strip .flag{fill:var(--ink)}
 .season-strip .flag-label{font:600 11px var(--font);fill:var(--ink)}
@@ -146,6 +150,7 @@ footer a{color:var(--muted)}
   .timeline li{grid-template-columns:1fr;gap:4px}
   .profile-links{grid-template-columns:repeat(2,auto)}
   .season-hint{display:none}
+  .injury-labels{display:none}
 }
 
 /* Next: IRONMAN */

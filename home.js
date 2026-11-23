@@ -62,6 +62,16 @@
   svg.setAttribute('aria-label', 'Daily training since ' + nice(data.coverage_start) + '. Use the left and right arrow keys to move between days.');
   const el = (name, attrs) => { const e = document.createElementNS(ns, name); for (const k in attrs) e.setAttribute(k, attrs[k]); return e; };
 
+  // Injury bands sit behind the bars.
+  const injuries = (window.INJURIES || []).map(r => ({
+    ...r, from: Math.round((parse(r.start) - start) / DAY), to: Math.round((parse(r.end) - start) / DAY)
+  })).filter(r => r.to >= 0 && r.from < n).map(r => ({ ...r, from: Math.max(0, r.from), to: Math.min(n - 1, r.to) }));
+  for (const r of injuries) {
+    svg.appendChild(el('rect', { class: 'injury', x: r.from * STEP - (STEP - BAR) / 2, y: 0,
+                                 width: (r.to - r.from + 1) * STEP, height: H }));
+  }
+  const injuryOn = i => injuries.find(r => i >= r.from && i <= r.to);
+
   const cursor = el('rect', { class: 'cursor', x: 0, y: 0, width: STEP, height: H });
   svg.appendChild(cursor);
 
@@ -84,6 +94,18 @@
     if (d.acts.some(a => a.event)) svg.appendChild(el('rect', { class: 'flag', x, y: y - 9, width: BAR, height: 4 }));
   });
   host.appendChild(svg);
+  if (injuries.length) {
+    const labels = document.createElement('div');
+    labels.className = 'injury-labels';
+    labels.setAttribute('aria-hidden', 'true');
+    for (const r of injuries) {
+      const s = document.createElement('span');
+      s.style.left = (r.from / n * 100) + '%';
+      s.textContent = r.label;
+      labels.appendChild(s);
+    }
+    host.appendChild(labels);
+  }
 
   // Month labels and race flags, in HTML so text stays a readable size
   const months = document.createElement('div');
@@ -105,13 +127,15 @@
   const dur = s => { const m = Math.round(s / 60); return m >= 60 ? `${Math.floor(m / 60)} h ${m % 60} min` : `${m} min`; };
   const describe = d => {
     const when = new Date(parse(d.date)).toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric', timeZone: 'UTC' });
-    if (!d.acts.length) return `${when}: rest day`;
+    const hurt = injuryOn(days.indexOf(d));
+    const tail = hurt ? ` (${hurt.note})` : '';
+    if (!d.acts.length) return `${when}: rest day${tail}`;
     const parts = d.acts.map(a => {
       const name = clean(a.event) || sportNames[a.sport] || 'Session';
       const mi = a.distance_m > 100 ? `${(a.distance_m / 1609.344).toFixed(1)} mi, ` : '';
       return `${name}, ${mi}${dur(a.timer_duration_s || 0)}`;
     });
-    return `${when}: ${parts.join('; ')}`;
+    return `${when}: ${parts.join('; ')}${tail}`;
   };
   let current = -1;
   const select = i => {
