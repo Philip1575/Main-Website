@@ -14,7 +14,7 @@ const yearRows=()=>D.activities.filter(a=>a.date.startsWith(year)),included=()=>
 const matching=a=>($('#group-select').value==='all'||a.group===$('#group-select').value)&&($('#sport-select').value==='all'||a.sport===$('#sport-select').value);
 const years=[...new Set(D.activities.map(a=>a.date.slice(0,4)).concat(year))].sort().reverse();
 $('#year-select').innerHTML=years.map(y=>`<option${y===year?' selected':''}>${y}</option>`).join('');
-$('#updated-through').textContent=`Updated through ${dateName(D.as_of)} · Weekly refresh`;
+$('#updated-through').textContent=`Updated through ${dateName(D.as_of)} · Refreshed daily`;
 function renderOverview(){
  const rows=included(),end=year===D.as_of.slice(0,4)?D.as_of:`${year}-12-31`,start=D.coverage_start.slice(0,4)===year?D.coverage_start:`${year}-01-01`;
  $('#coverage').textContent=`Tracking started ${new Date(D.coverage_start+'T12:00:00Z').toLocaleDateString('en-US',{month:'long',day:'numeric',year:'numeric',timeZone:'UTC'})}.`;
